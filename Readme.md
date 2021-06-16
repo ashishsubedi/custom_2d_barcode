@@ -1,7 +1,10 @@
 ## Custom 2d Barcode (DxCode))
 2D custom barcode like QR code with custom encoding and decoding algorithm.
 
-![DxCode Sample](https://raw.githubusercontent.com/ashishsubedi/custom_2d_barcode/main/generated.png)
+Message = Hello World!!!
+![DxCode Sample: message = Hello World!!!](https://raw.githubusercontent.com/ashishsubedi/custom_2d_barcode/main/generated.png)
+
+20x20 blocks can store upto 34 bytes/characters.
 
 ### Description
 
