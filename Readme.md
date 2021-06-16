@@ -1,6 +1,7 @@
-## Custom 2d Barcode
+## Custom 2d Barcode (DxCode))
 2D custom barcode like QR code with custom encoding and decoding algorithm.
 
+![DxCode Sample](https://raw.githubusercontent.com/ashishsubedi/custom_2d_barcode/main/generated.png)
 
 ### Description
 
@@ -40,8 +41,8 @@ Outside edge of code is white, and remaining 19x19 contains other information.
 
 
 #### Decoding
-    1. Read the image and find the correct orientation
-    2. Approximate the  width of the block and use that as measure to find out block color.
+    1. Read the image and find the location of extremes
+    2. Approximate the  width and height of the block and use that as measure to find out block value.
     3. Starting from top left, decode the information using the encoding information.
 
 ### How to run
