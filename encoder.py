@@ -9,8 +9,8 @@ BLACK ='0'
 WHITE = '1'
 
 encodingMappings = {
-    'byte': '00',
-    'numeric': '00',
+    'byte': '11',
+    'numeric': '10',
 }
 
 class Encoder:
@@ -24,12 +24,10 @@ class Encoder:
         for i in range(1,HEIGHT-1):
             self.data_matrix[i][1] = BLACK
 
-        # Multiple of 3 make white upto 15
-        for j in range(3,HEIGHT-4,3):
-            self.data_matrix[-2][j] = WHITE
-            self.data_matrix[j][1] = WHITE
 
-        
+        # Fill Top Right in white,black,black
+        self.data_matrix[1][WIDTH-4:WIDTH-1] = [WHITE,BLACK,BLACK]
+
 
 
     def encode(self,msg,encoding_type='byte'):
@@ -38,6 +36,7 @@ class Encoder:
 
 
         msg_len = len(msg)
+        print(msg_len)
     
 
         # Fill the first two block with encoding type code
@@ -45,7 +44,7 @@ class Encoder:
         self.data_matrix[1][3] = encodingMappings[self.encoding_type][1]
 
         # Fill the 12 blocks with length information
-       
+ 
         binary_len = format(msg_len,'012b') # Length with 12 0 padding
         
         for j in range(12):
@@ -98,13 +97,13 @@ class Encoder:
             # Increase the character count
             count += 1
 
-
+        self._print_data_matrix()
         
         self.encoded = True
 
-    def matrix_to_image(self,size = (512,512),location='./',filename='generated',file_format='PNG'):
+    def matrix_to_image(self,size = (256,256),location='./',filename='generated',file_format='png'):
         if not self.encoded:
-            return Exception("Error: Message not encoded. Encode message before converting to image")
+            raise Exception("Error: Message not encoded. Encode message before converting to image")
         matrix_array_int = np.array(self.data_matrix).astype('uint8')
         img = Image.fromarray(matrix_array_int*255,'L')
         
@@ -119,5 +118,5 @@ class Encoder:
 if __name__ == '__main__':
     # Can store upto 34 characters
     e = Encoder()
-    e.encode("My name is Ashish!")
+    e.encode("My name is Anthony Gonzalvez. And I am in America!!")
     e.matrix_to_image()

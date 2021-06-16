@@ -6,26 +6,28 @@
 
 1 block = 1 bit
 
-Size: 13x13 blocks
+Size: 20x20 blocks
 
-Outside edge of code is white, and remaining 11x11 contains other information.
+Outside edge of code is white, and remaining 19x19 contains other information.
 
 0 - Black
 1 - White
 - Outside blocks are all white.
-- Remaining 11x11 blocks contains information. We assume our size as 11x11 now onwards
-- Left and bottom edges are used for orientation information
-- In the left edge, two blocks and one block are alternatively black and white.
+- Remaining 11x11 blocks contains information. We assume our size as 11x11 now onwardsLeft and bottom edges are used for orientation
+-  information
+- In the left edge, all blocks are black.
 - The bottom edge also has same pattern which extends from left to right.
-- Block (17,2) and (19,19) are black.
-- 2 blocks of top left after the identification column, contains information about encoding type. 
-    - 00 - Byte mode ( Data are ascii character, each char uses 1 byte)
-    - 01 - Numeric mode (All data are numeric, 1 byte for each number, represented as ascii)
-    - 10 - Undefined
-    - 11 - Undefined
-- After these, 12 blocks contains the number of blocks where information are stored
+- Top Right blocks are white, black,black
 
-- Remaining 275 blocks contains information sequentially. (34 bytes/characters of information)
+- 2 blocks of top left after the identification column, contains information about encoding type. 
+    - 11 - Byte mode ( Data are ascii character, each char uses 1 byte)
+    - 10 - Numeric mode (All data are numeric, 1 byte for each number, represented as ascii)
+    - 01 - Undefined
+    - 00 - Undefined
+- After these, 12 blocks contains the number of blocks where information are stored
+- Remainig blocks in the row are empty
+
+- Remaining 272 blocks contains information sequentially. (34 bytes/characters of information)
 
 
 ### Algorithms
