@@ -25,7 +25,7 @@ Outside edge of code is white, and remaining 11x11 contains other information.
     - 11 - Undefined
 - After these, 12 blocks contains the number of blocks where information are stored
 
-- Remaining 275 blocks contains information sequentially. (34 bytes of information)
+- Remaining 275 blocks contains information sequentially. (34 bytes/characters of information)
 
 
 ### Algorithms
