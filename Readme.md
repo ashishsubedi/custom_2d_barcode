@@ -13,7 +13,7 @@ Outside edge of code is white, and remaining 19x19 contains other information.
 0 - Black
 1 - White
 - Outside blocks are all white.
-- Remaining 11x11 blocks contains information. We assume our size as 11x11 now onwardsLeft and bottom edges are used for orientation
+- Remaining 19x19 blocks contains information. We assume our size as 11x11 now onwardsLeft and bottom edges are used for orientation
 -  information
 - In the left edge, all blocks are black.
 - The bottom edge also has same pattern which extends from left to right.
@@ -44,4 +44,8 @@ Outside edge of code is white, and remaining 19x19 contains other information.
     2. Approximate the  width of the block and use that as measure to find out block color.
     3. Starting from top left, decode the information using the encoding information.
 
+### How to run
+
+- Run <code> pip install -r requirements.txt </code>
+- Run <code> python main.py </code>
 

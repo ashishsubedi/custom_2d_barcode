@@ -1,6 +1,9 @@
 autopep8==1.5.7
+blessed==1.18.1
 numpy==1.20.3
 opencv-python==4.5.2.54
 Pillow==8.2.0
 pycodestyle==2.7.0
+six==1.16.0
 toml==0.10.2
+wcwidth==0.2.5
