@@ -24,6 +24,8 @@ class Decoder:
         
     def load_image(self, path):
         self.image = cv2.imread(path,0)
+        if self.image is None:
+            raise Exception("Error: Image not found")
         return self.image
 
     def image_to_matrix(self):
@@ -65,12 +67,12 @@ class Decoder:
                     startx,starty = row,col
                     pbr = 0
                     locatedFirstBlack = True
-                    print(row,col,img[row,col])
+                    # print(row,col,img[row,col])
     
 
                 # Find the no of pixels till next white 
                 if(locatedFirstBlack and img[row,col] == 255):
-                    print("First white after black",row,col,img[row,col])
+                    # print("First white after black",row,col,img[row,col])
                     break
             if locatedFirstBlack:
                 break
@@ -90,7 +92,7 @@ class Decoder:
         
         # Calculate the distance(width) of two extreme ends of black points in code
         width_of_two_black = col - starty
-        print(width_of_two_black)
+        # print(width_of_two_black)
 
 
         # Move from down to up till you find black line till the end, mark the end and start position
@@ -101,10 +103,10 @@ class Decoder:
 
         # Calculate the distance(height) of two extreme ends of black points in code
         height_of_two_black = row - startx
-        print(height_of_two_black)
+        # print(height_of_two_black)
  
         resize_factor = (round(width_of_two_black/(WIDTH-2)),round(height_of_two_black/(HEIGHT-2)))
-        print("Resize Factor",resize_factor)
+        # print("Resize Factor",resize_factor)
 
         bl = (row,starty)   
 
@@ -118,7 +120,7 @@ class Decoder:
             i += 1
             j=0
         
-        self._print_data_matrix()
+        # self._print_data_matrix()
         self.extracted = True
 
     def decode(self):
@@ -145,7 +147,7 @@ class Decoder:
                 
                 val >>= 1
                 val |=  (matrix_array_int[i,j]<<7)
-                print(i,j)
+       
 
                 j += 1
                 if j  == WIDTH-1:
@@ -162,7 +164,7 @@ class Decoder:
 
             count += 1
 
-        print("Decoding Complete!")
+        # print("Decoding Complete!")
         return ''.join(msg)
             
 

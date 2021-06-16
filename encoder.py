@@ -36,7 +36,7 @@ class Encoder:
 
 
         msg_len = len(msg)
-        print(msg_len)
+        # print(msg_len)
     
 
         # Fill the first two block with encoding type code
@@ -56,7 +56,7 @@ class Encoder:
         # Fill the remainig 272 blocks with data
         count = 0
         i,j = 2,2
-        print("Filling the data_matrix")
+        # print("Filling the data_matrix")
         while (count < msg_len and i<HEIGHT-2):
             
             current_character = msg[count]
@@ -97,11 +97,12 @@ class Encoder:
             # Increase the character count
             count += 1
 
-        self._print_data_matrix()
+        # self._print_data_matrix()
         
         self.encoded = True
+        return self.encode
 
-    def matrix_to_image(self,size = (256,256),location='./',filename='generated',file_format='png'):
+    def matrix_to_image(self,size = (256,256),location='./',filename='generated.png',file_format='png'):
         if not self.encoded:
             raise Exception("Error: Message not encoded. Encode message before converting to image")
         matrix_array_int = np.array(self.data_matrix).astype('uint8')
@@ -109,7 +110,7 @@ class Encoder:
         
         img = img.resize(size, Image.NEAREST)
         img.save(os.path.join(os.path.abspath(location),filename),file_format)
-        print("Saved as ",os.path.join(os.path.abspath(location),filename))
+        return True
 
     def _print_data_matrix(self):
         for i in range(HEIGHT):
