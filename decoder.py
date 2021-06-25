@@ -175,7 +175,7 @@ class Decoder:
 if __name__ == '__main__':
     # Can store upto 34 characters
     d = Decoder()
-    d.load_image('/home/ash/Desktop/projects/custom_2d_barcode/generated')
+    d.load_image('/home/ash/Desktop/projects/custom_2d_barcode/challange.png')
     d.image_to_matrix()
     msg = d.decode()
     print("Message is",msg)
